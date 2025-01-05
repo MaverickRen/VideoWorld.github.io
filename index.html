@@ -32,7 +32,7 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/favicon.svg">
+  <link rel="icon" href="./static/images/logo_v2.png">
   <link rel="stylesheet" href="./static/css/float.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -223,6 +223,31 @@
       <h2 class="subtitle has-text-centered">
         VideoWorld explores learning knowledge from raw videos, ranging from task-specific rules to high-level reasoning and planning capabilities.Compared to other learning methods: reinforcement learning (RL), supervised learning (SL) and text-based learning, it offers three advantages: 1. better generalization with unified visual representation for various tasks and interfaces, 2. lower mannual annotation burden, and 3. richer real-world information than text description.
       </h2>
+
+      <div class="center">
+      <div class="container">
+        <img src="./static/images/0.gif"  width="200" alt="Image 1">
+        <img src="./static/images/01.gif" width="200" alt="Image 2">
+        <img src="./static/images/02.gif" width="200" alt="Image 3">
+        <img src="./static/images/05.gif" width="200" alt="Image 4">
+      </div>
+      <p>
+        VideoWorld plays Go by generating next board state.
+      </p>
+
+      <div class="center">
+        <div class="container">
+          <img src="./static/images/r0.gif"  width="200" alt="Image 1">
+          <img src="./static/images/r1.gif" width="200" alt="Image 2">
+          <img src="./static/images/r3.gif" width="200" alt="Image 3">
+          <img src="./static/images/r4.gif" width="200" alt="Image 4">
+        </div>
+        <p>
+          VideoWorld controls robotic arms across different environments.
+        </p>
+
+    </div>
+
     </div>
   </div>
 </section>
@@ -286,6 +311,7 @@
 </section> -->
 
 
+
 <section class="section">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
@@ -320,13 +346,12 @@
       <div class="column is-five-fifths">
         <!-- <h2 class="title is-3"></h2> -->
         <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/Cdi-qikbEzk?si=rgFP7tL5rt8KCAhT"
+          <iframe src="https://www.youtube.com/embed/zNE-78wUD2c?si=s8R9LL9DwUBikY4A"
                   frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
       </div>
     </div>
     <!--/ Paper video. -->
-
   </div>
 </section>
 
@@ -443,7 +468,7 @@
         <!-- <div class="columns is-vcentered interpolation-panel"> -->
           
           <p style="font-size: 20px;">
-            In this work, we take an initial step toward exploring   knowledge learning from raw video data by leveraging the next token prediction paradigm. To achieve this, we construct two experiment environments to collect pure visual training data: Go and robotic manipulation. Go serves as a classic example of human intelligence in complex reasoning and forward planning, featuring a highly complex strategy space. Additionally,   its well defined rules, ease of  data collection, and the disentanglement of the low-level details (such as appearance and texture) from higher-level knowledge make it an ideal testbed for our investigation. In parallel, we also assess the model's capability, trained from raw video data, for robotic control tasks on CALVIN and RLBench benchmark. 
+            In this work, we take an initial step toward exploring  knowledge learning from raw video data by leveraging the next token prediction paradigm. To achieve this, we construct two experiment environments to collect pure visual training data: Go and robotic manipulation. 
             </p>
             <p style="font-size: 20px;">
               We begin our investigation with a basic video generation model based on VQ-VAE and autoregressive transformer. 
@@ -451,23 +476,39 @@
             
           </p>
           
-          <h2 class="title is-4">Problem formulation</h2>
+          <h2 class="title is-4">Key findings</h2>
           <p style="font-size: 20px;">
-            We define the video generation process for learning knowledge in the context of a specific task as a tuple \(\mathcal{G}=\left \langle \mathcal{X}, \mathcal{A}, \rho \right \rangle\), where \(\mathcal{X}\) is the observation space, \(\mathcal{A}\) is the action space, and \(\rho\) is a video generator. An offline dataset \(D=\{x_{1:T_n}^n\}_{n=1}^N\) consists of \(N\) video demonstrations within this environment, with \(T_n\) frames in each video sequence.
+            <b> 1. The model can learn basic knowledge from video generations.</b> This is evidenced by the its ability to  master Go rules and learn fundamental robotic operations.
+            <!-- We define the video generation process for learning knowledge in the context of a specific task as a tuple \(\mathcal{G}=\left \langle \mathcal{X}, \mathcal{A}, \rho \right \rangle\), where \(\mathcal{X}\) is the observation space, \(\mathcal{A}\) is the action space, and \(\rho\) is a video generator. An offline dataset \(D=\{x_{1:T_n}^n\}_{n=1}^N\) consists of \(N\) video demonstrations within this environment, with \(T_n\) frames in each video sequence. -->
           </p>
           
           <p style="font-size: 20px;">
-            Since the video frame sequences generated by \(\rho\) inherently contain the necessary information for task progression, we can directly learn a task-relevant mapping function  \(\pi\) that converts generated video frames into actions, Specifically,  \(\pi(\cdot|x_{1:t+1}):\mathcal{X}\rightarrow\mathcal{A}\), where \(\pi\) is a policy that maps the generated frames at time step \(t+1\) to appropriate action in \(\mathcal{A}\). This allows us to leverage the structure of generated videos to learn and execute the task without relying on explicit action annotations.
+            <b> 2. The compactness of visual change representation is crucial for efficient knowledge learning.</b> The representation and abstraction of visual change are crucial for the model to effectively capture knowledge.
+            <!-- Since the video frame sequences generated by \(\rho\) inherently contain the necessary information for task progression, we can directly learn a task-relevant mapping function  \(\pi\) that converts generated video frames into actions, Specifically,  \(\pi(\cdot|x_{1:t+1}):\mathcal{X}\rightarrow\mathcal{A}\), where \(\pi\) is a policy that maps the generated frames at time step \(t+1\) to appropriate action in \(\mathcal{A}\). This allows us to leverage the structure of generated videos to learn and execute the task without relying on explicit action annotations. -->
           </p>
 
-          <h2 class="title is-4">Basic Framework</h2>
+          <h2 class="title is-4">Latent Dynamics Model</h2>
+          <p style="font-size: 20px;">
+            Building on the observations above, we propose the  Latent Dynamics Model (LDM). The LDM  compresses the future visual changes into a set of latent codes to serve as the compact representation of multi-step visual context. This allows the model to predict both video frames and latent code during training, improving its ability to capture and reason about diverse visual information, such as detailed object interactions and dynamic scene changes. In the figure below, the video generation model with LDM
+            achieves superior training efficiency and demonstrates a 5-
+            dan professional level of performance against the RL agent
+          </p>
+          
+          <div class="center">
+          <img src="./static/images/rep_space_v1.png"
+                class="interpolation-image"
+                alt="Interpolate start reference image."  width="500"/>
+                <figcaption style="font-size: 20px;"></figcaption>
+              </div>
+
+          <!-- <h2 class="title is-4">Basic Framework</h2>
 
           <p style="font-size: 20px;">
             We focus on using an auto-regressive video generator to instantiate \(\rho\). The basic framework includes a VQ-VAE encoder-decoder, and an auto-regressive transformer. The encoder converts video frames into discrete tokens, which the transformer uses for next-token prediction during training. During inference, the transformer generates discrete tokens for the next frame, which are subsequently converted back to pixel space by the decoder. 
           </p>
           <p style="font-size: 20px;">
             In our implementation, the VQ-VAE is instantiated using a custom MAGVIT-v2, equipped with an FSQ quantizer, while the transformer is implemented using the Llama architecture.  This setup allows us to generate high-quality frames, enabling effective modeling of complex visual sequences for reasoning tasks.
-          </p>
+          </p> -->
 
           
 
@@ -478,7 +519,7 @@
 
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3"> <img src="./static/images/logo_v2.png" class="interpolation-image" alt="Interpolate start reference image." width="5%"/>  VideoWorld Model</h2>
+        <h2 class="title is-3"> <img src="./static/images/logo_v2.png" class="interpolation-image" alt="Interpolate start reference image." width="5%"/>  Overall Architecture</h2>
       </div>
     </div>
 
@@ -486,7 +527,7 @@
       <div class="column is-full-width">
         <div class="content has-text-justified">
           <p style="font-size: 20px;">
-            While the basic framework can learn essential knowledge, its learning efficiency lags behind models trained in state space (i.e., move positions on the board). We attribute this to the less compact nature of the visual representation space (i.e., the output of encoder), motivating us to develop VideoWorld to learn within a compact latent visual representation space.
+            <!-- While the basic framework can learn essential knowledge, its learning efficiency lags behind models trained in state space (i.e., move positions on the board). We attribute this to the less compact nature of the visual representation space (i.e., the output of encoder), motivating us to develop VideoWorld to learn within a compact latent visual representation space. -->
           </p>
 
           <img src="./static/images/overview_v6.png"
@@ -494,9 +535,10 @@
                 alt="Interpolate start reference image."/>
                 <figcaption style="font-size: 20px;">Overview of the proposed VideoWorld model architecture. (Left) Overall architecture. (Right) The proposed latent dynamics model (LDM). First, LDM compresses the visual changes from each frame to its subsequent \(H\) frames into compact latent codes. Then, an auto-regressive transformer seamlessly integrates the output of LDM with the next token prediction paradigm.</figcaption>
         
+          <p></p>
           
           
-          <h2 class="title is-4">Latent Dynamics Model</h2>
+          <!-- <h2 class="title is-4">Latent Dynamics Model</h2>
           <p style="font-size: 20px;">
             Video encoding typically requires hundreds or thousands of VQ tokens to capture the full range of visual information, leading to sparse embedding of knowledge across these tokens. To enhance efficiency, we introduce a latent dynamics model that uses query embeddings to represent visual changes across multiple frames, specifically for reasoning and planning tasks. For example,   multi-step board changes in Go or continuous actions in robotics exhibit strong temporal correlations. By compressing these multi-step changes into compact embeddings, we not only increase the compactness of policy information but also encode guidance for forward planning.
           </p>
@@ -548,8 +590,8 @@ The codebook used by the video decoder is distinct from the one used in the late
 
         </div>
       </div>
-   </div>
-    
+   </div> -->
+   
    <div class="columns is-centered has-text-centered">
     <div class="column is-full-width">
       <h2 class="title is-3"> <img src="./static/images/logo_v2.png" class="interpolation-image" alt="Interpolate start reference image." width="5%"/>  Understanding Learned Knowledge with LDM</h2>
@@ -564,8 +606,14 @@ The codebook used by the video decoder is distinct from the one used in the late
 
         <h2 class="title is-4">LDM learns patterns in the training set</h2>
         <p style="font-size: 20px;">
-          As shown in figure above, the latent codes on the training set capture both short- and long-term dependencies, demonstrating the model's ability to represent knowledge at different temporal scales. In the Go scenario, salient regions in the latent codes correspond to common move patterns, indicating that the model effectively embeds multi-step strategies into a compressed space, hence aiding decision-making and reasoning. Similarly, in the robotics scenario, the clustering of latent codes across steps reveals key dynamic dependencies over various time ranges, thus benefiting diverse manipulation tasks.
+          As shown in figure below, the latent codes on the training set capture both short- and long-term dependencies, demonstrating the model's ability to represent knowledge at different temporal scales. In the Go scenario, salient regions in the latent codes correspond to common move patterns, indicating that the model effectively embeds multi-step strategies into a compressed space, hence aiding decision-making and reasoning. Similarly, in the robotics scenario, the clustering of latent codes across steps reveals key dynamic dependencies over various time ranges, thus benefiting diverse manipulation tasks.
         </p>
+        <img src="./static/images/umap_v4.png"
+   class="interpolation-image"
+   alt="Interpolate start reference image."/>
+   <figcaption style="font-size: 20px;">UMAP projection of the learned latent code on the Go (Left) and CALVIN (right) training set. Each point represents
+     the continuous (pre-quantization) latent code generated by the LDM. In Go examples, odd steps represent white's moves, and even steps represent black's moves. We visualize the latent codes of black moves in steps 2/4/6. The legend shows examples of common patterns learned for new black moves. For clarity, these moves are highlighted on the board with added colors and lines to indicate new patterns. On the right, we visualize the latent codes of the robotic arm's movement along the X/Y/Z axes at intervals of 1, 5, and 10 frames. Points are color-coded by displacement range, with purple and red indicating the maximum displacement in opposite directions along each axis.</figcaption>
+
 
         <h2 class="title is-4">LDM enables forward planning during testing</h2>
         <p style="font-size: 20px;">
